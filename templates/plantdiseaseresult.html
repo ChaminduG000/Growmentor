@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Plant Disease Detection</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/result.css">
+    <style>
+        body {
+    background-image: url('static/css/images/homeBg.jpg'); /* Replace with the new image URL */
+    background-size: cover;
+    background-blur: 10px;
+    background-attachment: fixed;
+}
+        /* Circle Styles */
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto;
+            opacity: 0; /* Initially hidden */
+        }
+
+        .green {
+            background-color: green;
+            animation: blinkGreen 2s infinite;
+        }
+
+        .red {
+            background-color: red;
+            animation: blinkRed 2s infinite;
+        }
+
+        @keyframes blinkGreen {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes blinkRed {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+       
+
+        /* Style the button */
+        #showTreatmentButton {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #showTreatmentButton:hover {
+        background-color: darkgreen; /* Change to your preferred hover color */
+    }
+    body {
+    background-image: url('static/css/images/homeBg.jpg'); 
+    background-size: cover;
+    background-blur: 10px; 
+    background-attachment: fixed; 
+}
+#bacBtn {
+        background-color: green;
+        color: white;
+    }
+
+    /* Modify the existing hover style */
+    #bacBtn:hover {
+        background-color: rgb(28, 102, 28); /* Change to your preferred hover color */
+    }
+    #treatmentText {
+        font-size: 18px; /* Adjust the font size as needed */
+    }
+    </style>
+</head>
+<body>
+    <!-- Result Section -->
+  <center>  <section style="background-color: #023802; padding: 2%;">
+        <div class="reultDisplay m-4 mb-5 p-5 overflow-auto" style="width: 90%; height: 30rem; background-color: rgba(41, 39, 39, 0.4); border-radius: 36px;" id="resltDsply">
+            <p class="showReslt dsiplay-block" id="shwReslt"> </p>
+            <div class="row-sm p-sm-5">
+                <div class="col-sm-12 p-sm-5">
+                    <h1 class="text-center">
+                        <div class="circle green"></div>
+                        <div class="circle red"></div>
+        
+                        <b><big><big><font color="white">Plant Disease Detection</b></font>
+                    </h1>
+                    <h2 class="text-center mt-4" style="color: white;">
+                        
+                        {% set disease_mapping = {
+                            'GrapeBlackrot': 'Grape Black Rot Disease',
+                            'GrapeEsca(BlackMeasles)': 'Grape Esca Disease',
+                            'GrapeLeafBlight(IsariopsisLeafSpot)': 'Grape Leaf Blight Disease (Isariopsis Leaf Spot)',
+                            'TomatoBacterialspot': 'Tomato Bacterial Spot Disease',
+                            'TomatoTomatomosaicvirus': 'Tomato Tomato Mosaic Virus Disease',
+                            'TomatoEarlyblight': 'Tomato Early Blight Disease',
+                            'TomatoLateblight': 'Tomato Late Blight Disease',
+                            'TomatoLeafMold': 'Tomato Leaf Mold Disease',
+                            'TomatoTargetSpot': 'Tomato Target Spot Disease',
+                            'TomatoSeptorialeafspot': 'Tomato Septoria Leaf Spot Disease',
+                            'TomatoSpidermitesTwo-spottedspidermite': 'Tomato Spider Mites Two-Spotted Spider Mite Disease',
+                            'StrawberryLeafscorch': 'Strawberry Leaf Scorch',
+                            'CornCercosporaleafspotGrayleafspot': 'Corn Cercospora Leaf Spot Gray Leaf Spot Disease',
+                            'CornCommonrust': 'Corn Common Rust Disease',
+                            'CornNorthernLeafBlight': 'Corn Northern Leaf Blight Disease',
+                            'Aloeverarot': 'Aloevera Rot Disease',
+                            'Aloeverarust': 'Aloevera Rust Disease',
+                            'AppleApplescab': 'Apple  Scab Disease',
+                            'AppleBlackrot': 'Apple Black Rot Disease',
+                            'AppleCedarapplerust': 'Apple Cedar Apple Rust Disease',
+                            'CherryPowderymildew': 'Cherry Powdery Mildew Disease',
+                            'Pepper,bellBacterialspot': 'Pepper, Bell Bacterial Spot Disease',
+                            'PotatoEarlyblight': 'Potato Early Blight Disease',
+                            'PotatoLateblight': 'Potato Late Blight Disease',
+                            'PeachBacterialspot': 'Peach Bacterial Spot ',
+                            'Strawberryhealthy': 'Healthy Strawberry',
+                            'Aloeverahealthyleaf': 'Healthy Aloevera Leaf',
+                            'Applehealthy': 'Healthy Apple',
+                            'Cherryhealthy': 'Healthy Cherry ',
+                            'Cornhealthy': 'Healthy Corn',
+                            'Grapehealthy': 'HealthyGrape',
+                            'Peachhealthy': 'Healthy Peach',
+                            'Pepper,bellhealthy': 'Healthy Bell Pepper',
+                            'Potatohealthy': 'Healthy Potato',
+                            'Tomatohealthy': 'Healthy Tomato'
+                        } %}
+                        <i class="fas fa-{{ disease_mapping[corrected_result.split('(')[0]]|lower }}"></i>
+                        {{ disease_mapping[corrected_result.split('(')[0]]|default(corrected_result) }}
+                    </h2>
+                    
+                    <!-- Button to toggle treatment information -->
+                    <div class="text-center mt-4">
+                        <button id="showTreatmentButton">View Treatment</button>
+                    </div>
+                    
+                    <div class="container mt-4" id="treatmentContainer" style="display: none;">
+                        <h3 style="color: white; text-align: justify;">Recommendation for Disease:</h3>
+                        <p style="text-align: justify; color: white;" id="treatmentText">{{ treatment }}</p>
+                        <!-- Display the link -->
+                        <a href="{{ Link1 }}" target="_blank" style="color: white; text-decoration: underline;">Link to Learn More</a>
+                    </div>
+
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="backBtn d-flex justify-content-center" id="backBtn">
+            <button onclick="goBack()" class="bacBtn btn btn-primary btn-lg mb-1" id="bacBtn" style="text-decoration: none;">Go Back</button>
+        </div>
+        
+    </section>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    
+        // Get the corrected_result value
+        var corrected_result = "{{corrected_result}}"; // Replace with your actual value
+    
+        
+        // Get the circle elements
+        var greenCircle = document.querySelector('.circle.green');
+        var redCircle = document.querySelector('.circle.red');
+        var diseaseDetails = document.getElementById('diseaseDetails');
+    
+        // Check if the corrected_result includes "healthy"
+        if (corrected_result.toLowerCase().includes("healthy")) {
+            greenCircle.style.display = "block";
+            redCircle.style.display = "none";
+        } else {
+            redCircle.style.display = "block";
+            greenCircle.style.display = "none";
+        }
+    
+        // Check if corrected_result is "grapeblackrot" to display diseaseDetails
+        if (corrected_result.toLowerCase() === "grapeblackrot") {
+            diseaseDetails.style.display = "block"; // Show disease details
+        }
+    </script>
+  <script>
+    const showTreatmentButton = document.getElementById("showTreatmentButton");
+    const treatmentContainer = document.getElementById("treatmentContainer");
+
+    // Get the corrected_result value
+    var corrected_result = "{{ corrected_result }}"; // Replace with your actual value
+
+    // Check if the corrected_result includes "healthy"
+    if (corrected_result.toLowerCase().includes("healthy")) {
+        showTreatmentButton.style.display = "none"; // Hide the treatment button
+    }
+
+    showTreatmentButton.addEventListener("click", function() {
+        // Toggle the visibility of the treatment container
+        if (treatmentContainer.style.display === "none") {
+            treatmentContainer.style.display = "block";
+        } else {
+            treatmentContainer.style.display = "none";
+        }
+    });
+</script>
+    
+</body>
+</html>

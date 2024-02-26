@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <title>Grow Mentor</title>
+    
+    <link rel="icon" type="image/x-icon" href="./Images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+        <!-- Header -->
+        <div class="mainWrapper sticky navbar" id="main">
+            <div class="centerWrapper" id="center">
+                <div class="leftWrapper" id="left">
+                    <div class="navLogo" id="logoNav">
+                        <a href="#home">
+                            <img src="./Images/navLogo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="menuWrapper" id="menuW">
+                        <ul>
+                            <li><a class="active" href="#home">Home</a></li>
+                            <li><a href="#service">Service</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="rightWrapper" id="right">
+                    <div class="loginAndSignUp" id="lasp">
+                        <ul>
+                            <li><a href="./login.html">Login</a></li>
+                            <li><a href="./signUp.html" target="_blank">Sign Up</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="mobile p-2" style="background-color: #020f04a0;">
+                <a href="#home"><li><i class='bx bx-home container' ></i></i></li></a>   
+                <a href="#contact"><li><i class='bx bx-mail-send'></i></i></li></a>   
+                <span onclick= openNav()><li><i class='bx bx-menu container'></i></i></li></span>   
+            </ul>
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class='bx bx-x'></i></a>
+                <div class="overlay-content" onclick="closeNav()">
+                  <a  href="#about">About</a>
+                  <a  href="#service">Service</a>
+                  <a  href="#contact">Contact</a>
+                  <a  href="./login.html#login">Login</a>
+                  <a  href="./signUp.html#signUp">Sign Up</a>
+                </div>
+              </div>
+        </div>       
+        <!-- Home Section -->
+    <section class="homeSection" id="home">
+            <div class="homeTxtWrapper">
+                <div class="welcomePara">
+                    <p><span class="welcomeTxt">Welcome</span> to the Future of Plant Care. <br> 
+                    To protect your plants Elevate with</p>
+                </div>
+                <div class="logoHome" id="logoHome">
+                    <img src="./Images/logo2.png" alt="">
+                </div>
+                <div class="sayGoodbye" id="sayGoodbye">
+                    <div class="boxView" id="boxView">
+                        <p>Say goodbye to plant diseases</p>
+                    </div>
+                </div>
+                <div class="testBtn" id="testBtn">
+                    <a href="#service" class="btn btn-success">Check Your Plant</a>
+                </div>
+            </div> 
+    </section>
+    <!-- Service Section -->
+    <section class="serviceSection" id="service">
+        <div class="mainServiceWrapper ">
+            <h2 class="headingService p-4 d-flex justify-content-center text-center" style="font-weight: bold">Check Plant Disease</h2>
+            <div class="blurBox d-flex justify-content-center align-items-center" style="width: auto; height: 350px; border: 5px solid #fff6f600; background-color: #e6e6e634; border-radius: 50px;" id="blurBox">   
+                    <img id="toUpld" src="" alt="Uploaded Image" style="max-width: 100%; max-height: 100%;">
+                </div>
+            </div>
+            <div class="uploadBtns d-flex align-items-center justify-content-center pt-2">
+                    <input type="file" id="chooseFile" name="filename" style="background-color: #a6dba76b; color:#ffffff">
+                    <button onclick="uploadImage()" class="btn btn-success" style="background-color: #07270e95;">Upload</button>
+            </div>
+                <div class="okBtn  d-flex justify-content-center" id="okBtn">
+                <a href="./result.html" class="okBtn btn btn-success" id="okBtn" type="button" target="_parent" style="background-color: #164f21ad;">OK</a>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+   <section class="aboutSection" id="about" style="background-color: #445c44;">
+    <h2 class="aboutTopic text-center mt-5" style="color: #95bdae;">About Us</h2>
+    <p class="container position-relative d-grid gap-3 text-center mt-4 border rounded border-0" 
+    style="padding: 2% 2% 5% 2%; font-weight: 700; font-size: large; color: #ccead1; background-color: #ffffff1f; 
+    box-shadow: 2rem 1.3rem 2.5rem rgb(46, 46, 46);">
+        Welcome to Grow Mentor. <br>
+        <span></span>
+        We're here to help you identify and address leaf diseases in your plants using cutting-edge artificial intelligence technology.
+        <br><span></span>
+        You can take your plant care to the next level, making gardening and farming more accessible and sustainable for everyone. Join us in cultivating greener, healthier environments one leaf at a time.
+    </p>
+    <div class="d-flex justify-content-center pt-5"><img src="./Images/logo2.png" alt="" style="width: 30%;box-shadow: 2rem .5rem 2.5rem rgb(46, 46, 46);"></div>
+</section>    
+
+<!-- Contact Section -->
+    <section class="contactWrapper" id="contact" style="background-color: #c9e5cabb;">
+        <div class="containerContact container display-block">
+            <h2 class="text-center mt-5" style="color: #07270E; font-weight: bold;">Contact Us</h2>
+            <form class="contactForm border border-2 d-grid gap-3 p-3" id="contactForm" style="background-color: #C9E5CA;">
+                <div class="nameEnter d-flex justify-content-center" id="nameEnter">
+                    <input type="text" id="name" placeholder="Enter Your Name" class="inputContact1 w-75 border border-0 p-2">
+                </div>
+                <div class="phNmbrEnter d-flex justify-content-center" id="phNmbrEnter">
+                    <input type="number" id="phNmbr" placeholder="Enter Your Phone Number" class="inputContact2 w-75 border border-0 p-2">
+                </div>
+                <div class="messageArea d-flex justify-content-center">
+                    <textarea name="message" id="msgBox" cols="30" rows="10" placeholder="Message" class="inputContact3 w-75 border border-0 p-2"></textarea>
+                </div>
+                <div class="d-flex justify-content-center ">
+                    <input type="button" value="Submit" id="contactBtn" class="cBtn btn btn-success">
+                </div>
+            </form>
+        </div>
+        <div class="mediaBox" id="mediaBox">
+                <div class="mediaLogo d-flex justify-content-end" id="mediaLogo">
+                    <img src="./Images/logo2.png" alt="">
+                </div>
+        </div>
+    </section>
+    <!--Footer Section -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2023 by GrowMentor | All Right Reserved</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home"><i class='bx bx-chevrons-up text-right'></i></a>
+        </div>
+    </footer>
+   <!-- Scroll  -->
+   <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- Main js -->
+   <script src="./main.js"></script>
+
+</body>
+</html>

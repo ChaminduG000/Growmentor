@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    list-style-type: none;
+    font-family: 'Arial', sans-serif;
+} 
+html{
+    overflow-x: hidden;
+}
+a{
+    text-decoration: none;
+    padding-right: 2%;
+}
+body{
+    background-color: #edf5eca0;
+    background-image: url(./images/flower-green-leaf-isolated-white-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(6px);
+}
+body, h1, h2, label {
+    color: rgb(0, 58, 0);
+
+}
+label{
+    font-weight: bold;
+}
+
+/* Change the color of the blue elements to green */
+#public:checked + label {
+    color: rgb(18, 136, 18);
+}
+input[type="submit"][name="post"] {
+background-color: #03260dbb;
+color: rgb(127, 255, 249);
+border: none;
+transition: .5s ease;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+}
+/* Style for the "Post" button on hover */
+input[type="submit"][name="post"]:hover {
+    background-color: rgba(0, 109, 60, 0.856);
+    font-weight: bold;
+    color: #f0fff4;
+}
+hr {
+    border-top: 3px solid green;
+}
+hr {
+    border-color: green;
+}
+.post .post-header h3 {
+    color: green;
+}
+
+/* Change the color of the date and time to green */
+.post .post-header .post-timestamp {
+    color: green;
+}
+.container .createpost{
+    width: 100%;
+    height: 100vh;
+    color: rgb(114, 194, 194);
+    box-shadow: 1rem 1rem 1rem 0px rgba(50, 50, 50, 0.582);
+    border-radius: 5px;
+    background-image: url('./images/flower-green-leaf-isolated-white-background.jpg'); /* Replace 'background.jpg' with your image file name */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+.container .createpost .createpostbuttons .upld{
+    background-color: rgb(3 26 10 / 73%);
+    border-radius: 15px;
+    box-shadow: 1rem 1rem 1rem 0px rgba(50, 50, 50, 0.582);
+    color: #85b6bc;
+    overflow-x: hidden;
+    
+}
+@media(max-width:527px){
+    .container .createpost .createpostbuttons .upld{
+        font-size: .8rem;
+        padding: 12px;
+    }
+    .container .createpost .createpostbuttons .upld img{
+        display: none;
+    }
+}
+@media(max-width:300px){
+    .container .createpost .createpostbuttons .upld{
+        font-size: .5rem;
+        padding: 12px;
+    }
+}
+@media(max-width:770px){
+    #cap{
+        overflow-x: auto;
+    }
+}
+.container .post,.container .post a{
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+.container .post{
+    background-color: rgba(255, 255, 255, 0.571);
+    box-shadow: 0 .1rem 2.5rem rgba(50, 50, 50, 0.582);
+    transition: .3s ease;
+
+}
+.container .post:hover{
+    
+    background-color: #e1faf3c3;
+    color: #031c09;
+}
+.container .post,.container .post a .caption{
+    color: #031c09;
+    padding: 5%;
+    font-style: normal;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}

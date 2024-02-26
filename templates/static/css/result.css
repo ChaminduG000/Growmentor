@@ -1,0 +1,13 @@
+.btn-primary{
+    --bs-btn-bg: #747272;
+    color: #C8FFF1 ;
+    border: none;
+}
+.btn-primary:hover{
+    --bs-btn-hover-bg: #474747;
+    color: #7dffde ;
+    font-size: large;
+
+}
+
+

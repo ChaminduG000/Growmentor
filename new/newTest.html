@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Service Section</title>
+</head>
+<body>
+  <h1>Service Section</h1>
+  <!-- Image display area -->
+  <div id="imageContainer" style="width: auto; height: 300px; border: 1px solid #ccc;">
+    <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; max-height: 100%;">
+  </div>
+  <!-- File input and upload button -->
+  <input type="file" id="fileInput">
+  <button id="uploadButton" onclick="uploadImage()">Upload</button>
+
+  <script>
+    // Check if the user is logged in (you need to implement this logic)
+    const userLoggedIn = false; // Set to true if the user is logged in
+
+    function uploadImage() {
+      const fileInput = document.getElementById("fileInput");
+      const uploadedImage = document.getElementById("uploadedImage");
+      const upLdImage = document.querySelector(".upLdImage");
+
+      // Check if the user is logged in
+      if (!userLoggedIn) {
+        alert("You must be logged in to upload an image.");
+        return;
+      }
+
+      // Check if a file is selected
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        
+        // Check if the selected file is an image
+        if (file.type.startsWith("image/")) {
+          const reader = new FileReader();
+
+          // Set up a callback function to display the image
+          reader.onload = function(event) {
+            uploadedImage.src = event.target.result;
+            upLdImage.style.display = "block"; // Show the image container
+          };
+
+          // Read the selected file as a data URL
+          reader.readAsDataURL(file);
+        } else {
+          alert("Please select an image file.");
+        }
+      } else {
+        alert("Please choose a file to upload.");
+      }
+    }
+
+    // Disable the upload button if the user is not logged in
+    if (!userLoggedIn) {
+      const uploadButton = document.getElementById("uploadButton");
+      uploadButton.disabled = true;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!-- search_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="mainWrapper sticky navbar" id="main">
+        <div class="centerWrapper" id="center">
+            <div class="leftWrapper" id="left">
+                <div class="navLogo" id="logoNav">
+                    <a href="#home">
+                        <img src="Images/navLogo.PNG" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1 style="text-align:center; margin-top:5%;">Search Results</h1>
+
+    {% if search_results %}
+        <!-- Display search results -->
+        {% for post in search_results %}
+            <div>
+                <p style="margin-left:10%;">Posted by: {{ post['first_name'] }} {{ post['last_name'] }}</p>
+                <p style="margin-left:10%;">News: {{ post['post_caption'] }}</p>
+                <p style="margin-left:10%;">Posted on: {{ post['post_time'] }}</p>
+
+                {% if post['post_photo'] %}
+                    <img src="{{ url_for('static', filename='uploads/' ~ post['post_photo']) }}" alt="Post Photo"
+                         style="max-width: 300px; max-height: 300px;">
+                {% endif %}
+
+                <hr>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+
+    <a href="{{ url_for('news_feed') }}">Back to News Feed</a>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2023 by GrowMentor | All Right Reserved</p>
+            <p>- Contact Us for more details -</p>
+            <a href="#" style="text-decoration:none; color:white; cursor:pointor;">GrowMentor</a>
+            <p>Grow Mentor News Feed</p>
+        </div>
+    </footer>
+</body>
+
+</html>

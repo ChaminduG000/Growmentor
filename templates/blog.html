@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Blog</title>
+    <link rel="icon" type="image/x-icon" href="./Images/favicon.ico">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- Header -->
+    <div class="mainWrapper sticky navbar" id="main">
+        <div class="centerWrapper" id="center">
+            <div class="leftWrapper" id="left">
+                <div class="navLogo" id="logoNav">
+                    <a href="#home">
+                        <img src="./Images/navLogo.png" alt="">
+                    </a>
+                </div>
+                <div class="menuWrapper" id="menuW">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#service">Service</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rightWrapper" id="right">
+                <div class="loginAndSignUp" id="lasp">
+                    <ul>
+                        <li><a href="login">Login</a></li>
+                        <li><a href="signUp" target="_blank">Sign Up</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+            <ul class="mobile p-2" style="background-color: #020f04a0;">
+                <a href="#home"><li><i class='bx bx-home container' ></i></i></li></a>   
+                <a href="#contact"><li><i class='bx bx-mail-send'></i></i></li></a>   
+                <span onclick= openNav()><li><i class='bx bx-menu container'></i></i></li></span>   
+            </ul>
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class='bx bx-x'></i></a>
+                <div class="overlay-content" onclick="closeNav()">
+                    <a  href="#about">About</a>
+                    <a  href="#service">Service</a>
+                    <a  href="#contact">Contact</a>
+                    <a  href="login">Login</a>
+                    <a  href="signUp">Sign Up</a>
+                </div>
+            </div>
+    </div>   
+<!-- Blog Upload Section -->
+<section style="background-color: #07270E;color:aliceblue">
+    <h1 class="text-center blog">Share Your Knowladge </h1>
+    <form action="" class="hero p-3" style="background-color: #07270ea1;"> 
+        <div class="card d-flex w-30 h-50 pt-2" style="--bs-card-border-color:#0a4317; background:url(./Images/Blog.jpg);background-repeat: no-repeat;background-size: cover;background-position: top;">
+            <img src="./Images/leaf.png" id="profile-pic" class="img-thumbnail rounded mx-auto d-block" style="width: 200px; height:200px">
+            <div class="d-flex justify-content-center pb-3">
+                <input type="file" accept="image/*" id="input-file" class="mt-2" required style="background-color: #77997f5d;color:aliceblue">
+            </div>
+            <div class="diseaseInpt mb-3 mt-3 p-5 d-flex justify-content-center">
+                <label class="fw-bold" for="DName">Disease Name: </label>
+                <input type="text" id="DName" placeholder="Disease Name" name="Disease Name" required>
+            </div>
+            <div class="messageArea d-flex justify-content-center">
+                <textarea name="message" id="blog" cols="30" rows="10" placeholder="If any treatment do you know please give the information of that." class=" w-50 border border-0 p-2" style="background-color: #efffede9;"></textarea>
+            </div>
+            <div class="d-flex justify-content-center pt-3">
+                <input type="button" value="Submit" id="kSubmitBtn" class="cBtn btn btn-success mb-2">
+            </div>
+        </div>
+    </form>
+</section>
+
+
+ <!-- Script for upload the image -->
+    <script>
+        let profilePic = document.getElementById("profile-pic");
+        let inputFile = document.getElementById("input-file");
+
+        inputFile.onchange = function(){
+            profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        }
+    </script>
+
+    <script src="./main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Feed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<style>
+     .search-bar {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .search-bar form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search-bar input[type="text"] {
+        padding: 8px;
+        width: 200px;
+    }
+
+    .search-bar button {
+        padding: 8px;
+        background-color: #0a350c;
+        color: white;
+        border: none;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="mainWrapper sticky navbar" id="main">
+        <div class="centerWrapper" id="center">
+            <div class="leftWrapper" id="left">
+                <div class="navLogo" id="logoNav">
+                    <a href="#home">
+                        <img src="{{ url_for('static', filename='images/navLogo.PNG') }}" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="ml-auto">
+                <a class="logOutBackBtn" href="/">Back</a>
+                <a class="logOutBackBtn" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <!-- Display user information -->
+         
+
+        <!-- Form to submit new posts with photo -->
+<h2 style="margin-top:5%;text-align:center;">Share Your Knowledge with Others</h2>
+
+<!-- Display flash messages -->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<form action="{{ url_for('submit_post') }}" method="post" enctype="multipart/form-data">
+    <label for="post_caption">Share Your Knowledge</label>
+    <textarea id="post_caption" name="post_caption" rows="10" cols="50" required></textarea><br>
+
+    <!-- File input for photo upload -->
+    <label for="post_photo">Upload Photo:</label>
+    <input type="file" id="post_photo" name="post_photo"><br>
+
+    <!-- Use the logged-in user's ID as the post_by value -->
+    <input type="hidden" name="post_by" value="{{ session['user_id'] }}">
+
+    <!-- Center the submit button -->
+   <center> <div style="text-align: center;">
+        <button type="submit" style="margin-top:34px">Submit Post</button>
+    </div>
+</form>
+    </div>
+    <h1 style="text-align:center; margin-top:5%;">Welcome to the News Feed</h1>
+    <div class="search-bar">
+        <form action="{{ url_for('khub_route') }}" method="post">
+            <input type="text" name="search_query" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    
+    <!-- Display posts -->
+    {% for post in posts %}
+        <div>
+            <p style="margin-left:10%; text-align: justify; width: 80%;">Posted by: {{ post.user.first_name }} {{ post.user.last_name }}</p>
+            <p style="margin-left:10%; text-align: justify; width: 80%;"><font color="red">Treatments or Tips For Plant Diseases:</font> {{ post['post_caption'] }}</p>
+            <p style="margin-left:10%; text-align: justify; width: 80%;">Posted on: {{ post['post_time'] }}</p>
+
+            <!-- Display the uploaded photo if available -->
+            {% if post['post_photo'] %}
+                <img src="{{ url_for('static', filename='uploads/' ~ post['post_photo']) }}" alt="Post Photo"
+                    style="max-width: 300px; max-height: 300px;">
+            {% endif %}
+
+            <hr>
+        </div>
+    {% endfor %}
+</body>
+
+<footer class="footer">
+    <div class="footer-text">
+        <p>Copyright &copy; 2023 by GrowMentor | All Right Reserved</p>
+        <p>- Contact Us for more details -</p>
+        <a href="#" style="text-decoration:none; color:white; cursor:pointer;">GrowMentor</a>
+        <p>Grow Mentor News Feed</p>
+    </div>
+</footer>
+
+</html>
